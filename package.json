@@ -1,0 +1,26 @@
+{
+  "name": "course-prerequisite-planner",
+  "version": "1.0.0",
+  "description": "A comprehensive web application that helps students plan their academic journey using advanced graph algorithms",
+  "scripts": {
+    "install-all": "npm install && cd backend && npm install && cd ../frontend && npm install",
+    "dev": "concurrently \"npm run backend\" \"npm run frontend\"",
+    "backend": "cd backend && npm run dev",
+    "frontend": "cd frontend && npm start",
+    "build": "cd frontend && npm run build",
+    "start": "cd backend && npm start"
+  },
+  "keywords": [
+    "graph-algorithms",
+    "course-planning",
+    "education",
+    "react",
+    "nodejs",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+} 

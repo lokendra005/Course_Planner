@@ -1,0 +1,205 @@
+[
+  {
+    "id": "MATH101",
+    "name": "Calculus I",
+    "credits": 4,
+    "description": "Differential calculus, limits, continuity, derivatives and applications",
+    "prerequisites": []
+  },
+  {
+    "id": "MATH102",
+    "name": "Calculus II", 
+    "credits": 4,
+    "description": "Integral calculus, sequences, series, and differential equations",
+    "prerequisites": ["MATH101"]
+  },
+  {
+    "id": "MATH201",
+    "name": "Discrete Mathematics",
+    "credits": 3,
+    "description": "Logic, sets, functions, relations, combinatorics, and graph theory",
+    "prerequisites": ["MATH101"]
+  },
+  {
+    "id": "MATH301",
+    "name": "Linear Algebra",
+    "credits": 3,
+    "description": "Vector spaces, matrices, eigenvalues, and linear transformations",
+    "prerequisites": ["MATH102"]
+  },
+  {
+    "id": "PHYS101",
+    "name": "Physics I",
+    "credits": 4,
+    "description": "Mechanics, waves, and thermodynamics with calculus",
+    "prerequisites": ["MATH101"]
+  },
+  {
+    "id": "CS101",
+    "name": "Introduction to Programming",
+    "credits": 3,
+    "description": "Basic programming concepts using Python. Variables, loops, functions, and data structures",
+    "prerequisites": []
+  },
+  {
+    "id": "CS102",
+    "name": "Programming Fundamentals",
+    "credits": 3,
+    "description": "Object-oriented programming, recursion, and advanced data structures",
+    "prerequisites": ["CS101"]
+  },
+  {
+    "id": "CS201",
+    "name": "Data Structures and Algorithms",
+    "credits": 4,
+    "description": "Arrays, linked lists, stacks, queues, trees, graphs, and algorithm analysis",
+    "prerequisites": ["CS102", "MATH201"]
+  },
+  {
+    "id": "CS202",
+    "name": "Computer Organization",
+    "credits": 3,
+    "description": "Computer architecture, assembly language, and digital logic",
+    "prerequisites": ["CS102", "PHYS101"]
+  },
+  {
+    "id": "CS301",
+    "name": "Database Systems",
+    "credits": 3,
+    "description": "Database design, SQL, normalization, and transaction processing",
+    "prerequisites": ["CS201"]
+  },
+  {
+    "id": "CS302",
+    "name": "Operating Systems",
+    "credits": 3,
+    "description": "Process management, memory management, file systems, and concurrency",
+    "prerequisites": ["CS201", "CS202"]
+  },
+  {
+    "id": "CS303",
+    "name": "Computer Networks",
+    "credits": 3,
+    "description": "Network protocols, TCP/IP, routing, and network security",
+    "prerequisites": ["CS202"]
+  },
+  {
+    "id": "CS304",
+    "name": "Software Engineering",
+    "credits": 3,
+    "description": "Software development lifecycle, design patterns, and project management",
+    "prerequisites": ["CS201"]
+  },
+  {
+    "id": "CS305",
+    "name": "Web Development",
+    "credits": 3,
+    "description": "HTML, CSS, JavaScript, React, and full-stack web applications",
+    "prerequisites": ["CS201"]
+  },
+  {
+    "id": "CS401",
+    "name": "Machine Learning",
+    "credits": 3,
+    "description": "Supervised and unsupervised learning, neural networks, and deep learning",
+    "prerequisites": ["CS201", "MATH301"]
+  },
+  {
+    "id": "CS402",
+    "name": "Artificial Intelligence",
+    "credits": 3,
+    "description": "Search algorithms, knowledge representation, and expert systems",
+    "prerequisites": ["CS201", "MATH201"]
+  },
+  {
+    "id": "CS403",
+    "name": "Computer Graphics",
+    "credits": 3,
+    "description": "3D graphics, rendering, animation, and graphics programming",
+    "prerequisites": ["CS201", "MATH301"]
+  },
+  {
+    "id": "CS404",
+    "name": "Cybersecurity",
+    "credits": 3,
+    "description": "Network security, cryptography, ethical hacking, and security protocols",
+    "prerequisites": ["CS303", "CS302"]
+  },
+  {
+    "id": "CS405",
+    "name": "Mobile App Development",
+    "credits": 3,
+    "description": "iOS and Android development, mobile UI/UX, and app deployment",
+    "prerequisites": ["CS305"]
+  },
+  {
+    "id": "CS406",
+    "name": "Cloud Computing",
+    "credits": 3,
+    "description": "AWS, Azure, containerization, microservices, and distributed systems",
+    "prerequisites": ["CS303", "CS301"]
+  },
+  {
+    "id": "CS407",
+    "name": "Game Development",
+    "credits": 3,
+    "description": "Game engines, physics simulation, AI for games, and multiplayer systems",
+    "prerequisites": ["CS403", "CS201"]
+  },
+  {
+    "id": "CS408",
+    "name": "Compiler Design",
+    "credits": 3,
+    "description": "Lexical analysis, parsing, code generation, and optimization",
+    "prerequisites": ["CS201", "MATH201"]
+  },
+  {
+    "id": "CS501",
+    "name": "Advanced Algorithms",
+    "credits": 3,
+    "description": "Dynamic programming, greedy algorithms, network flows, and NP-completeness",
+    "prerequisites": ["CS201", "MATH201"]
+  },
+  {
+    "id": "CS502",
+    "name": "Distributed Systems",
+    "credits": 3,
+    "description": "Consistency, fault tolerance, distributed consensus, and blockchain",
+    "prerequisites": ["CS302", "CS303"]
+  },
+  {
+    "id": "CS503",
+    "name": "High Performance Computing",
+    "credits": 3,
+    "description": "Parallel algorithms, GPU programming, and cluster computing",
+    "prerequisites": ["CS302", "MATH301"]
+  },
+  {
+    "id": "CS510",
+    "name": "Senior Capstone Project",
+    "credits": 4,
+    "description": "Independent software project demonstrating mastery of computer science concepts",
+    "prerequisites": ["CS304", "CS401"]
+  },
+  {
+    "id": "STAT201",
+    "name": "Statistics and Probability",
+    "credits": 3,
+    "description": "Descriptive statistics, probability distributions, and hypothesis testing",
+    "prerequisites": ["MATH102"]
+  },
+  {
+    "id": "ECON101",
+    "name": "Microeconomics",
+    "credits": 3,
+    "description": "Supply and demand, market structures, and consumer behavior",
+    "prerequisites": []
+  },
+  {
+    "id": "ENGL101",
+    "name": "Technical Writing",
+    "credits": 3,
+    "description": "Professional communication, documentation, and presentation skills",
+    "prerequisites": []
+  }
+]
