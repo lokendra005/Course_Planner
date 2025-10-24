@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1761315109070",
+    "name": "Test User",
+    "email": "test@example.com",
+    "password": "$2a$10$UdN0mTiRuDU0E3kYE7lWbOPeRwvHUKYYcfKlo4Ui/GBfucM8kVzy6",
+    "createdAt": "2025-10-24T14:11:49.070Z"
+  },
+  {
+    "id": "1761315714827",
+    "name": "lokendra ",
+    "email": "rajawatlokendra2003@gmail.com",
+    "password": "$2a$10$f/jQk7x2tE/zxnvBdYBGN.Eb7N5TmnFKIggDB0xrkBirgP1XhePRi",
+    "createdAt": "2025-10-24T14:21:54.827Z"
+  }
+]

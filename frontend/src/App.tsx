@@ -4,8 +4,11 @@ import { Course } from './types';
 import { ApiService } from './services/api';
 import CourseGraph from './components/CourseGraph';
 import AlgorithmAnalysis from './components/AlgorithmAnalysis';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import LoginButton from './components/LoginButton';
 
-function App() {
+function AppContent() {
+  const { user, loading: authLoading } = useAuth();
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -52,6 +55,11 @@ function App() {
   const handleAddCourse = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!user) {
+      setError('Please sign in to add courses');
+      return;
+    }
+    
     if (!formData.id.trim() || !formData.name.trim()) {
       setError('Course ID and Name are required');
       return;
@@ -79,6 +87,11 @@ function App() {
   };
 
   const handleDeleteCourse = async (id: string) => {
+    if (!user) {
+      setError('Please sign in to delete courses');
+      return;
+    }
+    
     if (window.confirm('Are you sure you want to delete this course?')) {
       try {
         await ApiService.deleteCourse(id);
@@ -108,15 +121,30 @@ function App() {
 
   const clearError = () => setError(null);
 
+  if (authLoading) {
+    return (
+      <div className="loading-container">
+        <div className="loading">Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       <header className="app-header">
-        <h1>📚 Course Prerequisite Planner</h1>
-        <p>Plan your academic journey with graph algorithms</p>
-        <div className="server-status">
-          <span className={`status-indicator ${serverStatus ? 'online' : 'offline'}`}>
-            {serverStatus ? '🟢 Server Online' : '🔴 Server Offline'}
-          </span>
+        <div className="header-content">
+          <div className="header-left">
+            <h1>📚 Course Prerequisite Planner</h1>
+            <p>Plan your academic journey with graph algorithms</p>
+          </div>
+          <div className="header-right">
+            <div className="server-status">
+              <span className={`status-indicator ${serverStatus ? 'online' : 'offline'}`}>
+                {serverStatus ? '🟢 Server Online' : '🔴 Server Offline'}
+              </span>
+            </div>
+            <LoginButton />
+          </div>
         </div>
       </header>
 
@@ -155,6 +183,11 @@ function App() {
             {/* Course Form Section */}
             <section className="course-form-section">
             <h2>Add New Course</h2>
+            {!user && (
+              <div className="auth-notice">
+                <p>Please sign in to add, edit, or delete courses.</p>
+              </div>
+            )}
             <form onSubmit={handleAddCourse} className="course-form">
               <div className="form-group">
                 <label htmlFor="courseId">Course ID *</label>
@@ -253,7 +286,7 @@ function App() {
               </div>
 
               <div className="form-actions">
-                <button type="submit" className="submit-btn">
+                <button type="submit" className="submit-btn" disabled={!user}>
                   Add Course
                 </button>
               </div>
@@ -319,6 +352,7 @@ function App() {
                         <button
                           onClick={() => handleDeleteCourse(course.id)}
                           className="delete-btn"
+                          disabled={!user}
                         >
                           Delete
                         </button>
@@ -373,6 +407,14 @@ function App() {
         </div>
       </footer>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }
 

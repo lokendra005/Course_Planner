@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const GraphAlgorithms = require('../utils/graphAlgorithms');
+const { requireAuth, optionalAuth } = require('../middleware/auth');
 
 const router = express.Router();
 const dataFile = path.join(__dirname, '../data/courses.json');
@@ -25,8 +26,8 @@ const writeCourses = (courses) => {
   fs.writeFileSync(dataFile, JSON.stringify(courses, null, 2));
 };
 
-// GET /api/courses - Get all courses
-router.get('/', (req, res) => {
+// GET /api/courses - Get all courses (optional auth for future user-specific features)
+router.get('/', optionalAuth, (req, res) => {
   try {
     const courses = readCourses();
     res.json(courses);
@@ -35,8 +36,8 @@ router.get('/', (req, res) => {
   }
 });
 
-// POST /api/courses - Add a new course
-router.post('/', (req, res) => {
+// POST /api/courses - Add a new course (requires authentication)
+router.post('/', requireAuth, (req, res) => {
   try {
     const { id, name, credits, description, prerequisites } = req.body;
     
@@ -76,8 +77,8 @@ router.post('/', (req, res) => {
   }
 });
 
-// PUT /api/courses/:id - Update a course
-router.put('/:id', (req, res) => {
+// PUT /api/courses/:id - Update a course (requires authentication)
+router.put('/:id', requireAuth, (req, res) => {
   try {
     const { id } = req.params;
     const { name, credits, description, prerequisites } = req.body;
@@ -117,8 +118,8 @@ router.put('/:id', (req, res) => {
   }
 });
 
-// DELETE /api/courses/:id - Delete a course
-router.delete('/:id', (req, res) => {
+// DELETE /api/courses/:id - Delete a course (requires authentication)
+router.delete('/:id', requireAuth, (req, res) => {
   try {
     const { id } = req.params;
     const courses = readCourses();

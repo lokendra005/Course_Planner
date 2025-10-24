@@ -1,13 +1,40 @@
 import axios from 'axios';
-import { Course, CourseOrderResponse, PrerequisitesResponse, ValidationResult } from '../types';
+import { Course, CourseOrderResponse, PrerequisitesResponse, ValidationResult, User } from '../types';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
+const AUTH_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
+});
+
+const authApi = axios.create({
+  baseURL: AUTH_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  withCredentials: true,
+});
+
+// Add request interceptor to include auth token
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('authToken');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+authApi.interceptors.request.use((config) => {
+  const token = localStorage.getItem('authToken');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
 });
 
 export class ApiService {
@@ -95,5 +122,41 @@ export class ApiService {
     } catch (error) {
       return false;
     }
+  }
+
+  // Authentication methods
+  static async login(email: string, password: string): Promise<{ token: string; user: User }> {
+    try {
+      const response = await authApi.post('/auth/login', { email, password });
+      return response.data;
+    } catch (error: any) {
+      console.error('Error logging in:', error);
+      throw error;
+    }
+  }
+
+  static async register(name: string, email: string, password: string): Promise<{ token: string; user: User }> {
+    try {
+      const response = await authApi.post('/auth/register', { name, email, password });
+      return response.data;
+    } catch (error: any) {
+      console.error('Error registering:', error);
+      throw error;
+    }
+  }
+
+  static async getCurrentUser(): Promise<User> {
+    try {
+      const response = await authApi.get('/auth/me');
+      return response.data.user;
+    } catch (error: any) {
+      console.error('Error getting current user:', error);
+      throw new Error(error.response?.data?.error || 'Failed to get user info');
+    }
+  }
+
+  static async logout(): Promise<void> {
+    // Simple logout - just remove token locally
+    return Promise.resolve();
   }
 } 
