@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { Course, CourseOrderResponse, PrerequisitesResponse, ValidationResult, User } from '../types';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
-const AUTH_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://course-planner-1.onrender.com/api';
+const AUTH_BASE_URL = process.env.REACT_APP_API_URL || 'https://course-planner-1.onrender.com';
 
 const api = axios.create({
   baseURL: API_BASE_URL,

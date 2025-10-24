@@ -2,7 +2,7 @@
   "name": "course-planner-frontend",
   "version": "1.0.0",
   "description": "React TypeScript frontend for Course Prerequisite Planner",
-  "homepage": "https://lokendra005.github.io/Course_Planner",
+  "homepage": ".",
   "dependencies": {
     "@google-cloud/local-auth": "^3.0.1",
     "@types/node": "^16.18.0",

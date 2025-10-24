@@ -10,7 +10,11 @@ const PORT = process.env.PORT || 5001;
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: [
+    process.env.FRONTEND_URL || 'http://localhost:3000',
+    'https://course-planner-app.vercel.app',
+    'https://frontend-2wbna2k35-lokendra005s-projects.vercel.app'
+  ],
   credentials: true
 }));
 app.use(bodyParser.json());
