@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Course_Planner/static/css/main.c5d974c8.css",
+    "main.js": "/Course_Planner/static/js/main.b10ec17c.js",
+    "index.html": "/Course_Planner/index.html",
+    "main.c5d974c8.css.map": "/Course_Planner/static/css/main.c5d974c8.css.map",
+    "main.b10ec17c.js.map": "/Course_Planner/static/js/main.b10ec17c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c5d974c8.css",
+    "static/js/main.b10ec17c.js"
+  ]
+}
