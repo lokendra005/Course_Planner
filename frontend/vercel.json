@@ -1,0 +1,17 @@
+{
+  "name": "course-planner-app",
+  "env": {
+    "REACT_APP_API_URL": "https://course-planner-1.onrender.com"
+  },
+  "build": {
+    "env": {
+      "REACT_APP_API_URL": "https://course-planner-1.onrender.com"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
