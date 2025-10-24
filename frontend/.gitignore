@@ -99,3 +99,4 @@ Thumbs.db
 
 # Data files (in development)
 backend/src/data/courses.json.backup 
+.vercel
